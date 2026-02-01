@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market xpress - Tu Tienda de Conveniencia en Joliet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--dark-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #1a252f;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--dark-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.ibb.co/G3FPd1qY/20250329-185143.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            max-height: 400px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .highlight {
+            background-color: rgba(46, 204, 113, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            margin: 20px 0;
+        }
+
+        .products {
+            background-color: var(--light-color);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .info-item i {
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .hours-detail {
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .hours-detail p {
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hours-detail .day {
+            font-weight: 600;
+        }
+
+        .hours-detail .time {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .map-container {
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-note {
+            background-color: var(--light-color);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .map-note i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+
+        .gallery {
+            background-color: white;
+            padding: 40px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            height: 250px;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background-color: white;
+                transition: left 0.3s;
+                box-shadow: var(--shadow);
+                padding: 20px;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+                margin-left: 0;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Market <span>xpress</span></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="https://market-xpress.square.site/" target="_blank" class="btn" style="padding: 8px 20px; margin-left: 10px;">Pedir Online</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Hero / Inicio -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>Market xpress - Tu Tienda en Joliet</h1>
+            <p>Tu tienda de conveniencia de confianza en West Jefferson. Productos frescos, abarrotes y más, con horario extendido para tu comodidad.</p>
+            <div class="btn-container">
+                <a href="https://market-xpress.square.site/" target="_blank" class="btn">
+                    <i class="fas fa-shopping-cart"></i> Ordenar Online
+                </a>
+                <a href="#contacto" class="btn btn-secondary">
+                    <i class="fas fa-map-marker-alt"></i> Cómo Llegar
+                </a>
+                <a href="tel:+13214439771" class="btn">
+                    <i class="fas fa-phone"></i> Llamar Ahora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section id="nosotros">
+        <div class="container">
+            <h2>Nuestra Tienda</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>En <strong>Market xpress</strong> nos enorgullece servir a la comunidad de Joliet desde nuestra ubicación en West Jefferson. Somos más que una tienda de conveniencia; somos tu vecino de confianza para las compras diarias.</p>
+                    
+                    <div class="highlight">
+                        <p><i class="fas fa-bullseye" style="color: var(--primary-color); margin-right: 10px;"></i> <strong>Nuestra Misión:</strong> Proporcionar productos de calidad con servicio excepcional, creando una experiencia de compra conveniente y agradable para todos nuestros clientes.</p>
+                    </div>
+                    
+                    <p>Ya sea que necesites ingredientes para la cena, snacks para el camino, o productos básicos para el hogar, en Market xpress encontrarás lo que buscas con la amabilidad que mereces.</p>
+                    
+                    <p>Además, ofrecemos la comodidad de hacer <strong>pedidos en línea</strong> a través de nuestra plataforma para que puedas comprar desde casa y recoger en tienda.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://i.ibb.co/0j5XMWmc/20250329-185150.jpg" 
+                         alt="Interior de Market xpress en Joliet - Vista general">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Productos -->
+    <section class="products" id="productos">
+        <div class="container">
+            <h2>Lo que Ofrecemos</h2>
+            <p class="section-subtitle">En Market xpress encontrarás una amplia variedad de productos para tu día a día.</p>
+            <div class="product-grid">
+                <!-- Producto 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.ibb.co/8n0QKGM3/20250329-185208.jpg" 
+                             alt="Productos frescos y refrigerados en Market xpress">
+                    </div>
+                    <div class="product-info">
+                        <h3>Productos Frescos</h3>
+                        <p>Alimentos refrigerados, lácteos, carnes frías y productos perecederos de calidad para tu alimentación diaria.</p>
+                    </div>
+                </div>
+                <!-- Producto 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.ibb.co/sJbkWdmn/20250329-185217.jpg" 
+                             alt="Bebidas y refrescos en Market xpress">
+                    </div>
+                    <div class="product-info">
+                        <h3>Bebidas y Refrescos</h3>
+                        <p>Amplia selección de bebidas, refrescos, aguas, jugos y energizantes para todos los gustos.</p>
+                    </div>
+                </div>
+                <!-- Producto 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.ibb.co/Y4cy5VLK/20250329-185224.jpg" 
+                             alt="Abarrotes y alimentos enlatados en Market xpress">
+                    </div>
+                    <div class="product-info">
+                        <h3>Abarrotes Esenciales</h3>
+                        <p>Todo lo necesario para tu despensa: alimentos enlatados, pastas, arroz, aceites y mucho más.</p>
+                    </div>
+                </div>
+                <!-- Producto 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://i.ibb.co/wFV2WBKG/20250329-185246.jpg" 
+                             alt="Snacks y dulces en Market xpress">
+                    </div>
+                    <div class="product-info">
+                        <h3>Snacks y Golosinas</h3>
+                        <p>Gran variedad de snacks, dulces, chocolates, galletas y todo para satisfacer tus antojos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Galería -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <h2>Galería de Nuestra Tienda</h2>
+            <p>Conoce más sobre Market xpress a través de nuestras fotos</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/G3FPd1qY/20250329-185143.jpg" 
+                         alt="Fachada de Market xpress en Joliet">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/qFVKT2r3/20250329-185257.jpg" 
+                         alt="Sección de congelados en Market xpress">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/0j5XMWmc/20250329-185150.jpg" 
+                         alt="Vista interior de Market xpress">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i.ibb.co/rGp8KGwq/20250329-185303.jpg" 
+                         alt="Mostrador y caja registradora de Market xpress">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto">
+        <div class="container">
+            <h2>Ven a Visitarnos</h2>
+            <div class="contact-content">
+                <!-- Información de Contacto -->
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <p>Estamos en West Jefferson Street, listos para atenderte con una sonrisa.</p>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Dirección</h4>
+                            <p>1306 W Jefferson St, Joliet, IL 60435, Estados Unidos</p>
+                            <p class="map-note"><i class="fas fa-info-circle"></i> Cerca de GVFP+2M Joliet, Illinois</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horario de Atención</h4>
+                            <p><strong>Abierto todos los días</strong></p>
+                            <div class="hours-detail">
+                                <p><span class="day">Lunes a Domingo:</span> <span class="time">7:00 am - 9:00 pm</span></p>
+                            </div>
+                            <p><small>Horario extendido para tu conveniencia</small></p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p><a href="tel:+13214439771" class="btn" style="padding: 8px 15px; display: inline-block;">+1 (321) 443-9771</a></p>
+                            <p><small>Haz clic para llamar directamente</small></p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-shopping-cart"></i>
+                        <div>
+                            <h4>Pedidos en Línea</h4>
+                            <p><a href="https://market-xpress.square.site/" target="_blank" class="btn" style="padding: 8px 15px; display: inline-block;">
+                                <i class="fas fa-external-link-alt"></i> market-xpress.square.site
+                            </a></p>
+                            <p><small>Ordena desde casa y recoge en tienda</small></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mapa de Google -->
+                <div class="contact-form">
+                    <h3>Ubicación en el Mapa</h3>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23838.45173109454!2d-88.0984138!3d41.5271436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880e6448c8f0e2c9%3A0x6c75e2e85b00c5c7!2s1306%20W%20Jefferson%20St%2C%20Joliet%2C%20IL%2060435%2C%20USA!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s" 
+                            width="100%" 
+                            height="400" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Ubicación de Market xpress en Joliet, Illinois">
+                        </iframe>
+                    </div>
+                    <div class="btn-container" style="margin-top: 20px;">
+                        <a href="https://maps.app.goo.gl/YGezchkgQNvfJ5887" target="_blank" class="btn">
+                            <i class="fas fa-directions"></i> Cómo Llegar con Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Market xpress</h3>
+                    <p>Tu tienda de conveniencia de confianza en Joliet, IL. Calidad, servicio y cercanía desde West Jefferson Street.</p>
+                    <p><i class="fas fa-store"></i> Abierto todos los días de 7:00 am a 9:00 pm</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nuestra Tienda</a></li>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                        <li><a href="#contacto">Contacto y Ubicación</a></li>
+                        <li><a href="https://market-xpress.square.site/" target="_blank">Ordenar Online</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto Rápido</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 1306 W Jefferson St, Joliet, IL 60435</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+13214439771">+1 (321) 443-9771</a></p>
+                    <p><i class="fas fa-clock"></i> 7:00 am - 9:00 pm (todos los días)</p>
+                    <div class="social-links" style="margin-top: 15px;">
+                        <a href="https://market-xpress.square.site/" target="_blank" title="Ordenar Online">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                        <a href="https://maps.app.goo.gl/YGezchkgQNvfJ5887" target="_blank" title="Ver en Google Maps">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </a>
+                        <a href="tel:+13214439771" title="Llamar por teléfono">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Market xpress - 1306 W Jefferson St, Joliet, IL 60435. Todos los derechos reservados.</p>
+                <p style="margin-top: 5px; font-size: 0.8rem;">Teléfono: +1 (321) 443-9771 | Horario: 7:00 am - 9:00 pm</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Año actual en el footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Menú móvil
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Suavizar el desplazamiento a los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Cerrar menú móvil si está abierto
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // Botón de llamada destacado
+        const callButtons = document.querySelectorAll('a[href^="tel:"]');
+        callButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                console.log('Llamando a Market xpress...');
+            });
+        });
+        
+        // Precarga de imágenes para mejor experiencia
+        window.addEventListener('load', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.loading = 'lazy';
+            });
+        });
+    </script>
+</body>
+  </html>
